@@ -1,0 +1,4 @@
+gyverlibs/GyverBME280@^1.5.3
+esphome/ESPAsyncTCP-esphome@^2.0.0
+adafruit/Adafruit Unified Sensor@^1.1.15
+arduino-libraries/ArduinoHttpClient@^0.6.1
