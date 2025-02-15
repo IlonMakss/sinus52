@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>Вход</title>
+    <style>
+        /* Основные стили */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        main {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 18px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Дополнительные стили для улучшения UX */
+        input::placeholder {
+            color: #999;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Стили для иконок (если нужно) */
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-container i {
+            position: absolute;
+            left: 10px;
+            color: #999;
+        }
+
+        .input-container input {
+            padding-left: 40px; /* Отступ для иконки */
+        }
+
+        /* Ссылка на регистрацию */
+        .register-link {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .register-link:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h2>Вход</h2>
+        <form action="login.php" method="post">
+            <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input required type="text" placeholder="Логин" name="login">
+            </div>
+
+            <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input required type="password" placeholder="Введите пароль" name="password">
+            </div>
+
+            <button type="submit">Войти</button>
+        </form>
+
+        <a href="register.html" class="register-link">Нет аккаунта? Зарегистрируйтесь</a>
+    </main>
+
+    <!-- Подключение FontAwesome для иконок -->
+    <script src="https://kit.fontawesome.com/ваш-код-сюда.js" crossorigin="anonymous"></script>
+</body>
+</html>

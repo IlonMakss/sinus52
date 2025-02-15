@@ -1,3 +1,31 @@
+<?php
+
+session_start();
+
+require_once __DIR__ . '/dbUsersConnect.php';
+
+$connect = getDB();
+
+$idUser = $_SESSION['user']['id'];
+
+if ($idUser == '') {
+    header("Location: /");
+}
+
+$sql = "SELECT * FROM `users` WHERE `id` = ('$idUser')";
+
+$result = mysqli_query($connect, $sql);
+$result = mysqli_fetch_all($result);
+
+$login;
+
+foreach($result as $item) {
+    $login = $item[1];
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,9 +36,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/styles/style.css">
-
-    <title>Главная</title>
+    <title>Личный кабинет</title>
     <style>
         /* Основные стили */
         body {
@@ -24,13 +50,13 @@
         }
 
         main {
-            text-align: center;
             background-color: #fff;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
+            text-align: center;
         }
 
         h2 {
@@ -39,44 +65,33 @@
             color: #333;
         }
 
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
         }
 
-        .buttons a {
+        a {
             padding: 12px 24px;
-            font-size: 18px;
+            font-size: 16px;
             color: white;
-            background-color: #28a745;
+            background-color: #dc3545;
             border: none;
             border-radius: 5px;
             text-decoration: none;
-            text-align: center;
             transition: background-color 0.3s ease;
         }
 
-        .buttons a:hover {
-            background-color: #218838;
-        }
-
-        .buttons a.register {
-            background-color: #007bff;
-        }
-
-        .buttons a.register:hover {
-            background-color: #0056b3;
+        a:hover {
+            background-color: #c82333;
         }
     </style>
 </head>
 <body>
     <main>
-        <h2>Войдите или зарегистрируйтесь</h2>
-        <div class="buttons">
-            <a href="login.html">Войти</a>
-            <a href="register.html" class="register">Регистрация</a>
-        </div>
+        <h2>Личный кабинет</h2>
+        <p>Добро пожаловать! <?= $login ?></p>
+        <a href="logout.php">Выход</a>
     </main>
 </body>
 </html>
