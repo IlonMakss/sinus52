@@ -18,9 +18,12 @@ $result = mysqli_query($connect, $sql);
 $result = mysqli_fetch_all($result);
 
 $login;
-
+$sensorId;
 foreach($result as $item) {
     $login = $item[1];
+}
+foreach($result as $item) {
+    $sensorId = $item[3];
 }
 
 
@@ -46,13 +49,13 @@ foreach($result as $item) {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            margin: 0; /* Исправлено: было 40 */
         }
 
         main {
             background-color: #fff;
             padding: 40px;
-            border-radius: 10px;
+            border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
@@ -61,14 +64,14 @@ foreach($result as $item) {
 
         h2 {
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             color: #333;
         }
 
         p {
             font-size: 18px;
             color: #555;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         a {
@@ -80,10 +83,20 @@ foreach($result as $item) {
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s ease;
+            display: inline-block; /* Чтобы кнопки были в одну линию */
+            margin: 5px; /* Отступ между кнопками */
         }
 
         a:hover {
             background-color: #c82333;
+        }
+
+        .buttons {
+            margin-bottom: 20px; /* Отступ между блоками кнопок */
+        }
+
+        .logout-button {
+            margin-top: 20px; /* Дополнительный отступ для кнопки "Выход" */
         }
     </style>
 </head>
@@ -91,7 +104,18 @@ foreach($result as $item) {
     <main>
         <h2>Личный кабинет</h2>
         <p>Добро пожаловать! <?= $login ?></p>
-        <a href="logout.php">Выход</a>
+        <p>ID вашей метеостанции: <?= $sensorId ?></p>
+        
+        <!-- Блок кнопок для графиков -->
+        <div class="buttons">
+            <a href="graphTemp.php" class="temperature">График температуры</a>
+            <a href="graphHum.php" class="humidity">График влажности</a>
+        </div>
+
+        <!-- Блок кнопки "Выход" -->
+        <div class="buttons logout-button">
+            <a href="logout.php">Выход</a>
+        </div>
     </main>
 </body>
 </html>
